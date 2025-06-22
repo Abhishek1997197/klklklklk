@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acadpia Intro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9ff;
+      overflow-x: hidden;
+    }
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5e00c5;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    nav a, .dropdown-btn {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      padding: 10px;
+      z-index: 999;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 8px 12px;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .contact-btn {
+      background-color: #5e00c5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 40px;
+      position: relative;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      max-width: 50%;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #111;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-top: 15px;
+      color: #555;
+    }
+    .hero-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-buttons a {
+      padding: 12px 20px;
+      background-color: #5e00c5;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .hero-buttons a:hover {
+      background-color: #3a008f;
+    }
+
+    .hero-video {
+      width: 600px;
+      height: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .hero-video iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .floating-icon {
+      position: absolute;
+      opacity: 0.08;
+      width: 80px;
+      z-index: 0;
+    }
+    .icon1 { top: 5%; left: 65%; }
+    .icon2 { bottom: 10%; right: 10%; }
+    .icon3 { top: 50%; left: 5%; }
+
+    .news-slider {
+      margin-top: 60px;
+      padding: 20px;
+      background: #f4f3ff;
+      overflow: hidden;
+      position: relative;
+    }
+    .news-container {
+      display: flex;
+      gap: 20px;
+      animation: scrollNews 20s linear infinite;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .news-card {
+      scroll-snap-align: start;
+      min-width: 250px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .news-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    @keyframes scrollNews {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .hero-text {
+        max-width: 100%;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 32px;
+      }
+      .hero-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .news-container {
+        animation: scrollNews 20s linear infinite;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+      .news-card {
+        min-width: 220px;
+      }
+    }
+    .article-section {
+    padding: 60px 20px;
+    background: #f0f0fa;
+    text-align: center;
+  }
+  .article-section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #222;
+  }
+  .article-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .article-card {
+    background: white;
+    border-radius: 20px;
+    width: 260px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+  .article-card:hover {
+    transform: translateY(-6px);
+  }
+  .article-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+  }
+  .article-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.6);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+  }
+  .article-card h3 {
+    font-size: 18px;
+    margin: 12px 16px 4px;
+    color: #111;
+  }
+  .article-card p {
+    font-size: 14px;
+    margin: 0 0 12px;
+    color: #666;
+  }
+  .read-more {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 6px 16px;
+    background-color: #5f2eea;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .read-more:hover {
+    background-color: #4a1ec9;
+  }
+
+  @media (max-width: 768px) {
+    .article-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ACADPIA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <span class="dropdown-btn">Study Material</span>
+      <div class="dropdown-content">
+        <a href="https://example.com/gandhi">Gandhi</a>
+        <a href="https://example.com/nehru">Nehru</a>
+        <a href="https://example.com/jinnah">Jinnah</a>
+        <a href="https://example.com/swami">Swami</a>
+      </div>
+    </div>
+    <a href="https://en.wikipedia.org/wiki/Nationalism#Anti-colonial" target="_blank">Monthly PDF</a>
+    <a href="https://en.wikipedia.org/wiki/Decolonization" target="_blank">About Us</a>
+    <a class="contact-btn" href="https://en.wikipedia.org/wiki/Colonialism" target="_blank">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Perfect your journey with practice</h1>
+    <p>simply dummy text of the printing typesetting industry. Lorem Ipsum has been</p>
+    <div class="hero-buttons">
+      <a href="#">Daily Quiz</a>
+      <a href="https://en.wikipedia.org/wiki/Imperialism" target="_blank">Free Test Series</a>
+    </div>
+  </div>
+  <div class="hero-video">
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+  </div>
+  <img class="floating-icon icon1" src="https://cdn-icons-png.flaticon.com/512/3235/3235237.png" alt="icon1" />
+  <img class="floating-icon icon2" src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="icon2" />
+  <img class="floating-icon icon3" src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="icon3" />
+</section>
+
+<section class="news-slider">
+  <div class="news-container">
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Gandhi was killed</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Nehru drank</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Jinnah left</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">America lost</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Twin tower rebuild</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">India is great</div></div>
+  </div>
+</section>
+<section class="article-section">
+  <h2>Articles</h2>
+  <div class="article-container">
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">History</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 1">
+      </div>
+      <h3>Gandhi is dead</h3>
+      <p>12 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Economy</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 2">
+      </div>
+      <h3>India Inflation</h3>
+      <p>11 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Inflation_in_India" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Science</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 3">
+      </div>
+      <h3>Earth is round</h3>
+      <p>10 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Earth" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Chemistry</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 4">
+      </div>
+      <h3>Bio hazard</h3>
+      <p>9 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Biohazard" target="_blank">Read More</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
